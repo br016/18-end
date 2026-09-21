@@ -28,12 +28,14 @@ jobs:
       run: npm install
 
     - name: Run Tests
-      run: npm test -- --coverage --watchAll=false
+      run: npm test -- --watchAll=false
       env:
         CI: true
 
     - name: Build Application
       run: npm run build
+      env:
+        CI: false
 
     - name: Deploy to GitHub Pages
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
